@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.description {
+    padding: 0 13%;
+}
+
+#expression {
+    text-align: center;
+}
+
+/* https://stackoverflow.com/questions/5127937/how-to-center-canvas-in-html5 */
+#network {
+    max-width: 500px;
+    height: 500px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+#expression {
+    width: 50%;
+}
+
+.expression-input p {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+
+.expression-input, .expression-controls {
+    margin-top: 2rem;
+}

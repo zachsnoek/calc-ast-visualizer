@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AST Visualizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script> 
+</head>
+<body>
+    <h1>Calculator AST Visualizer</h1>
+
+    <div class="description">
+        <p>
+            This application allows you to visualize the abstract syntax tree (AST) created by the calculator grammar. Enter an expression below and click "Visualize."
+        </p>
+    
+        <p>
+            To step through the creation of the AST after it has been created, click "Step Through" and continue clicking "Next."
+        </p>
+    </div>
+
+    <div class="expression-input">
+        <p>Enter an expression:</p>
+        <input type="text" id="expression" autocomplete="off" autofocus="on">
+    </div>
+    
+    <div class="expression-controls">
+        <button class="btn" onclick="getAST()">Visualize</button>
+    </div>
+
+    <div id="display-result">
+        <p>Result: <span id="result"></span></p>
+    </div>
+
+    <div class="step-controls">
+        <button class="btn" onclick="stepThrough()" id="step-through">Step Through</button>
+        <button class="btn" onclick="nextStep()" id="next-step">Next Step</button>
+    </div>
+
+    <div id="network"></div>
+
+    <script src="js/Stepper.js"></script>
+    <script src="js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
