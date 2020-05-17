@@ -1,3 +1,5 @@
 server/node_modules
 server/Procfile
+server/.git
+server/.gitignore
 todo.md
