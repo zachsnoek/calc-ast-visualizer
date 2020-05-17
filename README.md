@@ -1,5 +1,5 @@
 # Calc AST Visualizer
-[Demo]()
+[Demo](https://jovial-almeida-cdd04b.netlify.app)
 
 ## Description
 Calc AST Visualizer is a tool to visualize the abstract syntax tree (AST) generated from a simple calculator language. The Calc language and interpreter are from Kent D. Lee's "Programming Languages: An Active Learning Approach." The original Calc interpreter was ported from C++/Ruby to JavaScript for use in this project.
