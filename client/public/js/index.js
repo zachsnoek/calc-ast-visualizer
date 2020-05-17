@@ -1,4 +1,4 @@
-const server = "http://localhost:5000/evaluate";
+const server = "https://sleepy-bastion-65288.herokuapp.com/evaluate";
 const resultText = document.getElementById("result");
 const container = document.getElementById("network");
 const nextStepButton = document.getElementById("next-step");
