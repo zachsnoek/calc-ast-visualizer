@@ -1,12 +1,14 @@
 const server = "https://sleepy-bastion-65288.herokuapp.com/evaluate";
 const resultText = document.getElementById("result");
 const container = document.getElementById("network");
+const expressionText = document.getElementById("expression");
 const stepThroughButton = document.getElementById("step-through");
 const prevStepButton = document.getElementById("prev-step");
 const nextStepButton = document.getElementById("next-step");
 const resultContainer = document.getElementById("display-result");
 const tokens = /[0-9\(\)\+\-\*\/]/g;
 let stepper = null;
+let network = null;
 
 resetVisibility();
 
@@ -101,6 +103,16 @@ function resetVisibility() {
 }
 
 /**
+ * Clears all text and resets default visibility of elements.
+ */
+function resetAll() {
+    if (network != null) network.destroy();
+    expressionText.value = "";
+    resultText.textContent = "";
+    resetVisibility();
+}
+
+/**
  * Creates a tree and displays it.
  * 
  * @param {Array} n The nodes of the tree.
@@ -149,7 +161,7 @@ function createTree(n, e) {
         }
     };
 
-    const network = new vis.Network(container, tree, options);
+    network = new vis.Network(container, tree, options);
 }
 
 /**
