@@ -1,29 +1,40 @@
+/**
+ * A helper class to run through a postorder traversal of an AST.
+ */
 class Stepper {
     constructor(nodes, edges) {
         this.nodes = nodes;
         this.edges = edges;
-        this.started = false;
-        this.step = 1;
+        this.step = 0;
+    }
+
+    hasPrevStep() {
+        return this.step > 1;
     }
 
     hasNextStep() {
-        return !(this.step > this.nodes.length);
+        return !(this.step === this.nodes.length);
+    }
+
+    prevStep() {
+        this.step--;
     }
 
     nextStep() {
-        if (this.hasNextStep()) {
-            // Get the node with ID of this.step
-            const nodes = this.nodes.filter(n => n.id <= this.step);
+        this.step++;
+    }
 
-            // Find any edges that have a "from" property of this.step
-            const edges = this.edges.filter(e => e.from <= this.step);
-            this.step++;
+    getStepData() {
+        // Get any nodes that have an id property <= this.step
+        const nodes = this.nodes.filter(n => n.id <= this.step);
 
-            return { nodes, edges };
-        }
+        // Get any edges that have a from property <= this.step
+        const edges = this.edges.filter(e => e.from <= this.step);
+
+        return { nodes, edges };
     }
 
     reset() {
-        this.step = 1;
+        this.step = 0;
     }
 }

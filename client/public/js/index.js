@@ -1,8 +1,9 @@
 const server = "https://sleepy-bastion-65288.herokuapp.com/evaluate";
 const resultText = document.getElementById("result");
 const container = document.getElementById("network");
-const nextStepButton = document.getElementById("next-step");
 const stepThroughButton = document.getElementById("step-through");
+const prevStepButton = document.getElementById("prev-step");
+const nextStepButton = document.getElementById("next-step");
 const resultContainer = document.getElementById("display-result");
 const tokens = /[0-9\(\)\+\-\*\/]/g;
 let stepper = null;
@@ -67,7 +68,7 @@ function getAST() {
 function displayAST(data) {
     const { result, metadata } = data.data;
     const { nodes, edges } = metadata;
-
+    
     setResultText(result);
     createTree(nodes, edges);
 
@@ -94,6 +95,7 @@ function setResultText(result) {
  */
 function resetVisibility() {
     nextStepButton.classList.add("hidden");
+    prevStepButton.classList.add("hidden");
     stepThroughButton.classList.add("hidden");
     resultContainer.classList.add("hidden");
 }
@@ -162,16 +164,41 @@ function stepThrough() {
 }
 
 /**
- * Runs the next step of the AST.
+ * Runs the next step of the AST traversal.
  */
 function nextStep() {
-    const { nodes, edges } = stepper.nextStep();
-    createTree(nodes, edges);
+    stepper.nextStep();
+    createTreeFromStepper();
+
+    if (stepper.hasPrevStep()) {
+        prevStepButton.classList.remove("hidden");
+    }
 
     if (!stepper.hasNextStep()) {
         stepper.reset();
         stepThroughButton.classList.remove("hidden");
-        nextStepButton.classList.remove("visible");
         nextStepButton.classList.add("hidden");
+        prevStepButton.classList.add("hidden");
     }
+}
+
+/**
+ * Runs the previous step of the AST traversal.
+ */
+function prevStep() {
+    stepper.prevStep();
+    createTreeFromStepper();
+
+    if (!stepper.hasPrevStep()) {
+        prevStepButton.classList.add("hidden");
+    }
+}
+
+/**
+ * Helper function that gets the tree data from the current step
+ * and calls `createTree()`.
+ */
+function createTreeFromStepper() {
+    const { nodes, edges } = stepper.getStepData();
+    createTree(nodes, edges);
 }

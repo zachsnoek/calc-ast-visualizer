@@ -47,11 +47,17 @@ body {
     margin-bottom: 0;
 }
 
-.expression-input, .expression-controls {
+.expression-input, .expression-controls,
+#display-result, .step-controls {
     margin-top: 2rem;
 }
 
 ion-icon {
     font-size: 40px;
     color: #6e5494;
+}
+
+footer {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
 }
