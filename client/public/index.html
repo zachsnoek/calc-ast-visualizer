@@ -9,15 +9,19 @@
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script> 
 </head>
 <body>
-    <h1>Calculator AST Visualizer</h1>
+    <h1>Calc AST Visualizer</h1>
+
+    <div>
+        <a href="https://www.github.com/zachsnoek/calc-ast-visualizer" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+    </div>
 
     <div class="description">
         <p>
-            This application allows you to visualize the abstract syntax tree (AST) created by the calculator grammar. Enter an expression below and click "Visualize."
+            This application allows you to visualize the abstract syntax tree (AST) created by the Calc parser. Enter an expression below and click "Visualize."
         </p>
     
         <p>
-            To step through the creation of the AST after it has been created, click "Step Through" and continue clicking "Next."
+            To step through a postorder traversal of the AST after it has been created, click "Step Through" and continue clicking "Next."
         </p>
     </div>
 
@@ -36,13 +40,19 @@
 
     <div class="step-controls">
         <button class="btn" onclick="stepThrough()" id="step-through">Step Through</button>
+        <button class="btn grey lighten-1" onclick="prevStep()" id="prev-step">Prev Step</button>
         <button class="btn" onclick="nextStep()" id="next-step">Next Step</button>
     </div>
 
     <div id="network"></div>
 
+    <footer>
+        <p>&copy; <script>document.write(new Date().getFullYear());</script> Zachary D. Snoek</p>
+    </footer>
+
     <script src="js/Stepper.js"></script>
     <script src="js/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 </body>
 </html>

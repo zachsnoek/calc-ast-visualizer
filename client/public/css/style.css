@@ -1,3 +1,7 @@
+:root {
+    --max-width: 500px; 
+}  
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
@@ -7,7 +11,9 @@ body {
 }
 
 .description {
-    padding: 0 13%;
+    max-width: var(--max-width);
+    text-align: left;
+    margin: auto;
 }
 
 #expression {
@@ -16,7 +22,7 @@ body {
 
 /* https://stackoverflow.com/questions/5127937/how-to-center-canvas-in-html5 */
 #network {
-    max-width: 500px;
+    max-width: var(--max-width);
     height: 500px;
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -33,7 +39,7 @@ body {
 }
 
 #expression {
-    width: 50%;
+    max-width: var(--max-width);
 }
 
 .expression-input p {
@@ -43,4 +49,9 @@ body {
 
 .expression-input, .expression-controls {
     margin-top: 2rem;
+}
+
+ion-icon {
+    font-size: 40px;
+    color: #6e5494;
 }
